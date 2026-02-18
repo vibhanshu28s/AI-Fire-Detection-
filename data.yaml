@@ -1,0 +1,10 @@
+# 1. Path to your dataset root
+path: /content/drive/MyDrive/Colab Notebooks/dataset
+
+# 2. Relative paths to the train and validation images
+train: train/images
+val: validation/images
+
+# 3. Class Information
+nc: 3           # Number of Classes (just 'fire')
+names: ['fire', 'smoke', 'default'] # The name of your class

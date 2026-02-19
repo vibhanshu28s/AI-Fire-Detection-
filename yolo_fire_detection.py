@@ -9,7 +9,7 @@ model = YOLO("yolov8n_300.pt")
 # Move model to GPU if available and use half-precision for ~2x speedup
 # model.to('cuda').half()
 
-video_path = "47889-452144042_small.mp4"
+video_path = "manual_test_video/4116863-hd_1920_1080_30fps.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # Shared variables between threads
@@ -25,7 +25,7 @@ def ai_inference_thread():
     while run_threads:
         if latest_frame is not None:
             # imgsz=320 makes it much faster than the default 640
-            results = model(latest_frame, conf=0.3, imgsz=320, verbose=False)
+            results = model(latest_frame, conf=0.5, imgsz=320, verbose=False)
 
             temp_detections = []
             found_fire = False

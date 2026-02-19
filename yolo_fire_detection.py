@@ -2,14 +2,14 @@ import cv2
 import threading
 from ultralytics import YOLO
 import playsound
-import time
+
 
 # --- Setup ---
-model = YOLO("yolov8s.pt")
+model = YOLO("yolov8s_100.pt")
 # Move model to GPU if available and use half-precision for ~2x speedup
 # model.to('cuda').half()
 
-video_path = "127967-739777056.mp4"
+video_path = "47889-452144042_small.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # Shared variables between threads
@@ -25,7 +25,7 @@ def ai_inference_thread():
     while run_threads:
         if latest_frame is not None:
             # imgsz=320 makes it much faster than the default 640
-            results = model(latest_frame, conf=0.4, imgsz=320, verbose=False)
+            results = model(latest_frame, conf=0.5, imgsz=320, verbose=False)
 
             temp_detections = []
             found_fire = False
